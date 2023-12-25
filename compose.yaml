@@ -1,0 +1,57 @@
+services:
+#  db:
+#    container_name: mysql
+#    image: mysql:8.2.0
+#    volumes:
+#      - ./db:/var/lib/mysql
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=password
+#    ports:
+#      - 3306:3306
+  app:
+    container_name: laravel
+    build: .
+#    depends_on:
+#      - db
+    volumes:
+      - ./app:/src
+      - ./php.ini:/usr/local/etc/php/php.ini
+#  web:
+#    container_name: nginx
+#    image: nginx:1.25.3
+#    depends_on:
+#      - app
+#    ports:
+#      - 8000:8000
+#    volumes:
+#      - ./default.conf:/etc/nginx/conf.d/default.conf
+#      - ./web:/src
+
+
+#docker compose run --rm app sh -c 'cd /src \
+#&& composer config --global process-timeout 600 \
+#&& composer create-project "laravel/laravel=10.*" /src --prefer-dist \
+#&& composer install \
+#&& npm install \
+#&& chmod -R 755 /src/storage \
+#&& chmod -R 755 /src/storage/logs \
+#&& chmod -R 755 /src/storage/framework \
+#&& chown -R www-data:www-data /src/storage'
+
+
+#composer create-project laravel/laravel vercel-laravel-app
+#cd vercel-laravel-app 
+#composer require revolution/laravel-vercel-installer --dev
+#php artisan vercel:install
+
+#docker compose run --rm app sh -c 'cd /src && composer create-project laravel/laravel vercel-laravel-app \
+#&& composer install \
+#&& npm install \
+#&& chmod -R 755 /src/storage \
+#&& chmod -R 755 /src/storage/logs \
+#&& chmod -R 755 /src/storage/framework \
+#&& chown -R www-data:www-data /src/storage'
+
+#cd /src/vercel-laravel-appが必要
+#docker compose run --rm app sh -c 'composer require revolution/laravel-vercel-installer --dev'
+#docker compose run --rm app sh -c 'php artisan vercel:install'
